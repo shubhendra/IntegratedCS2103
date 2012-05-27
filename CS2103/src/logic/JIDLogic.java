@@ -2,16 +2,27 @@ package logic;
 
 //import java.io.FileNotFoundException;
 import java.util.Stack;
+
+import operation.*;
 //import org.apache.log4j.Logger;
 import data.Task;
 //import org.apache.log4j.Level;
 
 
-import Operation.*;
 import storagecontroller.StorageManager;
 
 public class JIDLogic {
 	
+		
+		public static void main(String[] args) {
+	        //logger.info("hi");
+	    	Add adder=new Add();
+	    	
+	    	Task[] abc=adder.execute("add *go to meet bhairav weekly by 3.45pm 3/8/2012  @work @home");
+	    	if (abc[0]!=null)
+	    	System.out.println(abc[0].getName());
+		
+	}
 	private Stack<Operation> undoStack;
 	
 	private String command;
