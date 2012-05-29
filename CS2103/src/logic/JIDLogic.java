@@ -8,6 +8,7 @@ import operation.*;
 import data.Task;
 //import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import gui.UIController;
 
 import storagecontroller.StorageManager;
 
@@ -16,16 +17,34 @@ public class JIDLogic {
 		private static Logger logger=Logger.getLogger(JIDLogic.class);
 		public static void main(String[] args) {
 	        //logger.info("hi");
+			/*
+			System.out.println(StorageManager.loadFile());
+	    	Add adder=new Add();
 	    	
-	    	
-	    	Task[] abc=executeCommand("add *go to meet bhairav weekly by 3.45pm 3/8/2012  @work @home");
+	    	Task[] abc=adder.execute("add *go to meet bhairav weekly by 3.45pm 3/8/2012  @work @home");
 	    	
 	    	logger.debug("inside JIDLogic");
 	    	if (abc[0]!=null)
+	    	{
 	    	System.out.println(abc[0].getName());
+	    	System.out.println(abc[0].getTaskId());
+	    	}
+	    	Search searcher=new Search();
+	    	Task[] xyz=searcher.execute("find *.*");
+	    	if (abc[0]!=null)
+	    	{
+	    		System.out.println(xyz[3].getTaskId());
+	    		System.out.println(xyz[2].getTaskId());
+	    	}
+	    	System.out.println(StorageManager.saveFile());*/
+			
+			JIDLogic_init();
+			UIController ui=new UIController();
+			
+			
 		
 	}
-	private static Stack<Operation> undoStack;
+	private static Stack<Operation> undoStack= new Stack<Operation>();
 	
 	private static String command;
 	//private Logger logger = Logger.getLogger(JIDLogic.class.getName());
@@ -34,9 +53,9 @@ public class JIDLogic {
 	 */
 	public JIDLogic() {
 		//ui = new UiController();
-		StorageManager.loadFile();
 		
-		undoStack = new Stack<Operation>();
+		
+		
 	}
 	public static Task[] executeCommand (String commandFromUser) {
 		Operation op = null;
@@ -68,7 +87,19 @@ public class JIDLogic {
 		
 		}
 		
+	public static void JIDLogic_init()
+	{
+		
+		StorageManager.loadFile();
+		
+	}
 	
+	public static void JIDLogic_close()
+	{
+		
+		StorageManager.saveFile();
+		
+	}
 
 	/**
 	 * Sets the view to the specified value
