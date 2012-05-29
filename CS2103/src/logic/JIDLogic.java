@@ -1,6 +1,8 @@
 package logic;
 
 //import java.io.FileNotFoundException;
+import gui.UIController;
+
 import java.util.Stack;
 
 import operation.*;
@@ -17,7 +19,7 @@ public class JIDLogic {
 		
 		public static void main(String[] args) {
 	        //logger.info("hi");
-			
+			/*
 			logger.debug(StorageManager.loadFile());
 			command="search";
 			Task[] def=executeCommand("find *.*");
@@ -30,7 +32,7 @@ public class JIDLogic {
 	    	}
 			
 	    	Add adder=new Add();
-	    	/*
+	    	
 	    	Task[] abc=adder.execute("add *go to meet bhairav weekly by 3.45pm 3/5/2013  @work @home");
 	    	Task[] efg=adder.execute("add blah blah from 6am to 7am 4/5/2012");
 	    	System.out.println(StorageManager.saveFile());
@@ -39,8 +41,8 @@ public class JIDLogic {
 	    	{
 	    	System.out.println(abc[0].getName());
 	    	System.out.println(abc[0].getTaskId());
-	    	}*/
-	    	/*
+	    	}
+	    	
 	    	for (int i=0;i<StorageManager.getAllTasks().length;i++)
     		{
 	    		if (StorageManager.getAllTasks()[i].getStartDateTime()!=null)
@@ -52,11 +54,11 @@ public class JIDLogic {
 	    		else
 	    			logger.debug(StorageManager.getAllTasks()[i].getEndDateTime().getDate());
     		}
-	    	*/
+	    	
 	    
 	    	
 	    	command="delete";
-	    	Task[] xyz=executeCommand("delete meet");
+	    	Task[] xyz=executeCommand("modify meet");
 	    	if (xyz!=null)
 	    	logger.debug("printing search"+ xyz.length);
 	    	if (xyz!=null)
@@ -66,13 +68,18 @@ public class JIDLogic {
 	    			System.out.println(xyz[i].getTaskId());
 	    		}
 	    	}
+	    	
 	    	//logger.debug(StorageManager.saveFile());
-	    	Task[] efg=executeCommand("delete $$__03-05-2013154500I__$$");
+	    	executeCommand("edit $$__03-05-2013154500I__$$" );
+	    	
+	    	Task efg[]=executeCommand("edit go to meet me weekly by 3.45pm 3/5/2013  @work @home");
+	    	
+	    	
 	    	if (efg!=null)
 	    	{
 	    		for (int i=0;i<efg.length;i++)
 	    		{
-	    			System.out.println(efg[i].getTaskId());
+	    			System.out.println(efg[i].getName());
 	    		}
 	    	}
 	    	def=executeCommand("find *.*");
@@ -80,14 +87,14 @@ public class JIDLogic {
 	    	{
 	    		for (int i=0;i<def.length;i++)
 	    		{
-	    			System.out.println(def[i].getTaskId());
+	    			System.out.println(def[i].getName());
 	    		}
 	    	}
-	    	
-			/*
+	    	logger.debug(StorageManager.saveFile());
+			*/
 			JIDLogic_init();
 			UIController ui=new UIController();
-			*/
+			
 			
 		
 	}
