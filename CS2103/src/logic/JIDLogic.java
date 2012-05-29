@@ -19,7 +19,7 @@ public class JIDLogic {
 		
 		public static void main(String[] args) {
 	        //logger.info("hi");
-			/*
+			
 			logger.debug(StorageManager.loadFile());
 			command="search";
 			Task[] def=executeCommand("find *.*");
@@ -31,7 +31,7 @@ public class JIDLogic {
 	    		}
 	    	}
 			
-	    	Add adder=new Add();
+	    	/*Add adder=new Add();
 	    	
 	    	Task[] abc=adder.execute("add *go to meet bhairav weekly by 3.45pm 3/5/2013  @work @home");
 	    	Task[] efg=adder.execute("add blah blah from 6am to 7am 4/5/2012");
@@ -56,11 +56,13 @@ public class JIDLogic {
     		}
 	    	
 	    
-	    	
+	    	*/
 	    	command="delete";
-	    	Task[] xyz=executeCommand("modify meet");
+	    	Task[] xyz=executeCommand("completed meet");
 	    	if (xyz!=null)
 	    	logger.debug("printing search"+ xyz.length);
+	    	else
+	    		logger.debug("No Search results");
 	    	if (xyz!=null)
 	    	{
 	    		for (int i=0;i<xyz.length;i++)
@@ -70,16 +72,16 @@ public class JIDLogic {
 	    	}
 	    	
 	    	//logger.debug(StorageManager.saveFile());
-	    	executeCommand("edit $$__03-05-2013154500I__$$" );
+	    	Task efg[]=executeCommand("completed $$__03-05-2013154500W__$$" );
 	    	
-	    	Task efg[]=executeCommand("edit go to meet me weekly by 3.45pm 3/5/2013  @work @home");
+	    	//Task efg[]=executeCommand("edit go to meet me weekly by 3.45pm 3/5/2013  @work @home");
 	    	
 	    	
 	    	if (efg!=null)
 	    	{
 	    		for (int i=0;i<efg.length;i++)
 	    		{
-	    			System.out.println(efg[i].getName());
+	    			logger.debug(efg[i].getCompleted());
 	    		}
 	    	}
 	    	def=executeCommand("find *.*");
@@ -87,13 +89,25 @@ public class JIDLogic {
 	    	{
 	    		for (int i=0;i<def.length;i++)
 	    		{
-	    			System.out.println(def[i].getName());
+	    			logger.debug(def[i].getName());
 	    		}
 	    	}
-	    	logger.debug(StorageManager.saveFile());
-			*/
-			JIDLogic_init();
-			UIController ui=new UIController();
+	    	logger.debug("before undo");
+	    	command="undo";
+	    	def=executeCommand("undo");
+	    	logger.debug("Executing undo");
+	    	if (def!=null)
+	    	{
+	    		for (int i=0;i<def.length;i++)
+	    		{
+	    			logger.debug(def[i].getName());
+	    			logger.debug(def[i].getCompleted());
+	    		}
+	    	}
+	    	//logger.debug(StorageManager.saveFile());
+			
+			//JIDLogic_init();
+			//UIController ui=new UIController();
 			
 			
 		
@@ -124,6 +138,7 @@ public class JIDLogic {
 		} else if (commandFromUser.trim().equals("undo") && !undoStack.empty()) {
 			logger.debug("inside third cond");
 			Operation undoAction = undoStack.pop();
+			logger.debug("popped last action from stack:"+undoAction.getOperationName());
 			return undoAction.undo();
 			
 		} else {
