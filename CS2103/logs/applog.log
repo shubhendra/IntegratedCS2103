@@ -31,3 +31,7 @@
 2012-05-27 19:17:31,524 - Operation.Add - INFO - hi
 2012-05-27 22:32:38,401 - Operation.Add - INFO - hi
 2012-05-27 23:06:57,021 - operation.Add - INFO - hi
+2012-05-29 11:49:19,492 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 11:51:07,672 - logic.JIDLogic - DEBUG - inside execute command
+2012-05-29 11:51:07,676 - logic.JIDLogic - DEBUG - inside first cond
+2012-05-29 11:51:07,676 - logic.JIDLogic - DEBUG - inside JIDLogic
