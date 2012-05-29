@@ -81,8 +81,8 @@ public class JIDLogic {
 	 * 
 	 * @param command
 	 */
-	public void setCommand(String command) {
-		this.command = command;
+	public static void setCommand(String _command) {
+		command = _command;
 	}
 
 	/**
