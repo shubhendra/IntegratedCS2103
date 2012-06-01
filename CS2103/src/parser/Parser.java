@@ -140,7 +140,7 @@ public class Parser {
 		Pattern p = Pattern.compile(ID_REGEX);
 		Matcher m = p.matcher(inputS);
 		
-		if(m.matches())
+		if(m.find())
 			id = m.group();
 		
 		return id;
@@ -673,6 +673,34 @@ public class Parser {
 				System.out.println("End time could NOT be set!");
 		
 			command = command.replaceFirst(TIME_TO_TIME, "");
+			command = removeExtraSpaces(command);
+			
+			return true;
+		}
+		
+		else if (mTimeDate.find()) {
+			System.out.println("-----time date only format-------");
+			
+			System.out.println("groups: "+mTimeDate.groupCount());
+			for (int i=0; i<mTimeDate.groupCount(); i++)
+				System.out.println("group "+i+": "+mTimeDate.group(i));
+			
+			startTimeString = mTimeDate.group(1);
+			startDateString = mTimeDate.group(14);
+			
+			System.out.println("start time string: "+startTimeString);
+			if (timeParser.setStartTime(startTimeString)) 
+				System.out.println("Start time is set!");
+			else
+				System.out.println("Start time could NOT be set!");
+			
+			System.out.println("start date string: "+startDateString);
+			if (dateParser.setStartDate(startDateString)) 
+				System.out.println("Start date is set!");
+			else
+				System.out.println("Start date could NOT be set!");
+			
+			command = command.replaceFirst(TIME_DATE, "");
 			command = removeExtraSpaces(command);
 			
 			return true;
