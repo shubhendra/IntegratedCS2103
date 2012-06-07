@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
 import logic.JIDLogic;
-import data.Task;
+
 
 import org.apache.log4j.*;
 
@@ -64,6 +64,10 @@ public class Binding {
 	        key = KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK);
 	        inputMap.put(key, "list");
 	        actionMap.put("list", new Action.ListAction());
+	        
+	        key = KeyStroke.getKeyStroke(KeyEvent.VK_O, Event.CTRL_MASK);
+	        inputMap.put(key, "overdue");
+	        actionMap.put("overdue", new Action.OverdueAction());
 	}
 	
 

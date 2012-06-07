@@ -1,24 +1,24 @@
 package gui;
 
 import java.awt.Component;
-import java.util.ArrayList;
+
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.SwingWorker;
+
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
 
 import logic.JIDLogic;
 
-import data.DateTime;
+
 import data.Task;
-import data.TaskHashMap;
+
 
 public class AutoUpdateJTable {
 	private JTable jTable;
@@ -61,11 +61,11 @@ public class AutoUpdateJTable {
     	str += tagToCode(task);
     	if(task.getCompleted())
     		str+=completedFont;
-    	if(task.getStartDateTime()!= null) {
-    		str+="<br/><i>start: </i>"+task.getStartDateTime().presentableToString();
+    	if(task.getStart()!= null) {
+    		str+="<br/><i>start: </i>"+task.getStart().presentableToString();
     	}
-    	if(task.getEndDateTime()!=null) {
-    		str+="<i>                  end: </i>"+task.getEndDateTime().presentableToString();
+    	if(task.getEnd()!=null) {
+    		str+="<i>                  end: </i>"+task.getEnd().presentableToString();
     	}
     	str += "</HTML>";
     	

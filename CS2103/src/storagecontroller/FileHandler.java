@@ -16,6 +16,7 @@ public class FileHandler
 	
 	private Logger logger=Logger.getLogger("Abc");
 	private static String fileName;
+	
 	public FileHandler(String name)
 	{
 		fileName=name;
