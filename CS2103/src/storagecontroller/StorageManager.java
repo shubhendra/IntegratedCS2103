@@ -1,6 +1,8 @@
 package storagecontroller;
 import data.TaskHashMap;
 import data.Task;
+import gcal.GoogleCalendar;
+
 import java.util.ArrayList;
 
 import operation.Add;
@@ -11,6 +13,7 @@ public class StorageManager
 {
 	private static TaskHashMap liveStorage=new TaskHashMap();
 	private static Logger logger = Logger.getLogger(StorageManager.class);
+	private static GoogleCalendar gCal;
 	/** default constructor
 	 * 
 	 */
@@ -33,7 +36,6 @@ public class StorageManager
 	public static boolean deleteTask(Task taskToBeRemoved)
 	{
 		return liveStorage.deleteTask(taskToBeRemoved);
-			
 	}
 	/** gets all the tasks from liveStorage  
 	 * 
@@ -94,7 +96,14 @@ public class StorageManager
 	 */
 	public static boolean replaceTask(Task taskToBeReplaced,Task taskToReplaceBy)
 	{
-		return ((liveStorage.deleteTask(taskToBeReplaced)) && (liveStorage.addTask(taskToReplaceBy)));
+		if(taskToBeReplaced==null || taskToReplaceBy==null)
+			return false;
+		System.out.println(getAllTasks().length);
+		liveStorage.deleteTask(taskToBeReplaced);
+		liveStorage.addTask(taskToReplaceBy);
+		taskToReplaceBy.setTaskId(taskToBeReplaced.getTaskId());
+		taskToReplaceBy.setDescription(taskToBeReplaced.getDescription());
+		return true;
 	}
 	/** exports from the xml file to a text file with name as fileName
 	 * 
@@ -121,6 +130,12 @@ public class StorageManager
 	public static boolean clearArchive()
 	{
 		return false;
+	}
+	public static GoogleCalendar getGCalObject(){
+		return gCal;
+	}
+	public static void setGCalObject(GoogleCalendar obj){
+		gCal=obj;
 	}
 }
 

@@ -1,28 +1,16 @@
 package gui;
 
-import java.awt.AWTException;
-import java.awt.Image;
-import java.awt.MenuItem;
-import java.awt.PopupMenu;
-import java.awt.SystemTray;
 import java.awt.Toolkit;
-import java.awt.TrayIcon;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+
+import constant.OperationFeedback;
 
 import logic.JIDLogic;
 
@@ -30,9 +18,11 @@ public class UIController {
 	static MainJFrame mainJFrame;
 	Reminder reminder;
 	static JotItDownTray JIDtray;
+	static OperationFeedback operationFeedback = OperationFeedback.VALID;
 	
 	public UIController() {
 		TopPopUp.createTopPopUp();
+		ExpandComponent.initialize();
 		mainJFrame = new MainJFrame();
 		
 		Timer timer = new Timer(100, new ActionListener(){
@@ -82,7 +72,8 @@ public class UIController {
 	}
 	
 	public static void refresh() {
-		ExpandJPanel.updateJTable();
+		ExpandComponent.updateJTable();
+		Reminder.update();
 	}
 	
 	public static boolean isFrameExpand() {
@@ -95,5 +86,61 @@ public class UIController {
 	
 	public static void contractFrame() {
 		mainJFrame.contractFrame();
+	}
+	
+	public static void logInToGCalendar(String username, char[] password) {
+		
+	}
+	
+	/**
+	 * receive feedback after each operation
+	 * @param newOPFeedback
+	 */
+	public static void sendOperationFeedback(OperationFeedback newOPFeedback) {
+		operationFeedback = newOPFeedback;
+	}
+	
+	//UI.sendOperationFeedback(OperationFeedback.INVALID_);
+	
+	public static OperationFeedback getOperationFeedback() {
+		return operationFeedback;
+	}
+	
+	public static void showInvalidDisplay() {
+		if(mainJFrame.isVisible())
+			switch(operationFeedback) {
+			case INVALID_DATE:
+				mainJFrame.showPopup("incorrect date input");
+			case INVALID_TIME:
+				mainJFrame.showPopup("incorret time input");
+			case INVALID_TASK_DETAILS:
+				mainJFrame.showPopup("incorrect task details");
+			case INVALID_LABEL:
+				mainJFrame.showPopup("incorrect label");
+			case INVALID_INCORRECTLOGIN:
+				mainJFrame.showPopup("wrong username or password");
+			case INVALID_NOINTERNET:
+				mainJFrame.showPopup("no internet connection");
+			case NOT_FOUND:
+				mainJFrame.showPopup("search not found!");
+			}
+		else {
+			switch(operationFeedback) {
+			case INVALID_DATE:
+				JIDtray.showText("Jot It Down!", "incorrect date input");
+			case INVALID_TIME:
+				JIDtray.showText("Jot It Down!", "incorret time input");
+			case INVALID_TASK_DETAILS:
+				JIDtray.showText("Jot It Down!", "incorrect task details");
+			case INVALID_LABEL:
+				JIDtray.showText("Jot It Down!", "incorrect label");
+			case INVALID_INCORRECTLOGIN:
+				JIDtray.showText("Jot It Down!", "wrong username or password");
+			case INVALID_NOINTERNET:
+				JIDtray.showText("Jot It Down!", "no internet connection");
+			case NOT_FOUND:
+				JIDtray.showText("Jot It Down!", "search not found!");
+			}
+		}
 	}
 }
