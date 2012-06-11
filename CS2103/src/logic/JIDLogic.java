@@ -327,6 +327,7 @@ public class JIDLogic implements Runnable {
 						
 			Task[] result=  op.execute(commandFromUser);
 			UIController.sendOperationFeedback(op.getOpFeedback());
+			logger.debug("Operation feedback:"+op.getOpFeedback());
 			logger.debug("THE OPERATION IS UNDOABLE:"+op.isUndoAble());
 			if (op.isUndoAble()) {
 				undoStack.push(op);
