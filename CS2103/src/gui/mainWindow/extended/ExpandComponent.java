@@ -4,23 +4,17 @@
  */
 package gui.mainWindow.extended;
 
-import gui.mainWindow.extended.ExpandComponent.MyTableModelListener;
-
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
+import java.awt.Dimension;
 
-import javax.swing.JComponent;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-
 import data.*;
 /**
  *the bottom part of the mainWindow component
@@ -73,6 +67,8 @@ public class ExpandComponent{
         jTable1.setCellSelectionEnabled(true);
         jTable1.setColumnSelectionAllowed(false);
         jTable1.setRowSorter(null);
+        jTable1.setIntercellSpacing(new Dimension(0, 1));
+        jTable1.setShowGrid(false);
         //jTable1.setColumnSelectionInterval(0, 0);
         
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -84,7 +80,7 @@ public class ExpandComponent{
         jScrollPane1.setViewportView(jTable1);
         jScrollPane1.setBounds(15, 115, 370, 270);
         jScrollPane1.setBackground(new Color(0,0,0,0));
-        
+        //jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
         jLayeredPane1.setBackground(new Color(0,0,0,0));
         
     }// </editor-fold>
@@ -180,7 +176,7 @@ public class ExpandComponent{
     }
     
     private static void minimizeColumn() {
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(323);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(326);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(25);
     	
     }
