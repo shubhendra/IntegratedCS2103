@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 //import gui.UIController;
 import storagecontroller.StorageManager;
 
-public class JIDLogic {
+public class JIDLogic implements Runnable {
 	
 		private static Logger logger=Logger.getLogger(JIDLogic.class);
 		//private static String command;
@@ -27,10 +27,38 @@ public class JIDLogic {
 	    	{
 	    		for (int i=0;i<def.length;i++)
 	    		{
-	    			logger.debug(def[i].toString2());
+	    			logger.debug(def[i].toString()+" "+def[i].getRecurringId());
 	    		}
 	    	}
-	    	def=executeCommand("login jid.troubleshoot@gmail.com jotitdown");
+	    	command="delete";
+	    	Task[] xyz=executeCommand("delete h");
+	    	if (xyz!=null)
+	    	logger.debug("printing search"+ xyz.length);
+	    	else
+	    		logger.debug("No Search results");
+	    	if (xyz!=null)
+	    	{
+	    		for (int i=0;i<xyz.length;i++)
+	    		{
+	    			logger.debug(xyz[i].toString());
+	    		}
+	    	}
+	    	
+	    	Task[] abc=executeCommand("starall "+xyz[0].getTaskId() );
+	    	//abc=executeCommand("starall "+xyz[4].getTaskId());
+	    	if (abc!=null)
+	    	logger.debug("printing search"+ abc.length);
+	    	else
+	    		logger.debug("No Search results");
+	    	if (abc!=null)
+	    	{
+	    		for (int i=0;i<abc.length;i++)
+	    		{
+	    			logger.debug(abc[i].toString()+" "+abc[i].getImportant());
+	    		}
+	    	}
+	    	
+	    	/*def=executeCommand("login jid.troubleshoot@gmail.com jotitdown");
 	    	logger.debug("executed gcal sync");
 	    	def=executeCommand("find *.*");
 	    	if (def!=null)
