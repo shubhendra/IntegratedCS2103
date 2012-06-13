@@ -120,6 +120,11 @@ public class GoogleCalendarOp extends Operation {
 		userCommand.trim().replaceAll("login","");
 		logger.debug(userCommand);
 		String params[]=userCommand.split("\\s+");
+		if (params.length!=3)
+		{
+			feedback=OperationFeedback.INVALID_INCORRECTLOGIN;
+			return null;
+		}
 		String username=params[1];
 		String password=params[2];
 		logger.debug(username);
@@ -171,11 +176,6 @@ public class GoogleCalendarOp extends Operation {
 		return isUndoAble;
 	}
 
-	@Override
-	public boolean isInputCorrect(String command) {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
 	public OperationFeedback getOpFeedback() {
 		// TODO Auto-generated method stub
