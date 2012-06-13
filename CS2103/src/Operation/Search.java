@@ -121,16 +121,21 @@ public class Search extends Operation {
 		//return null;
 	}
 	
-	private Task[] searchTodaysTasks(){
+	public Task[] searchTodaysTasks(){
 		Task [] allTasks=returnAllTasks();
 		ArrayList<Task> todaysTasks=new ArrayList<Task>();;
 		for(Task param:allTasks){
 			if (param.getStart()!=null && param.getStart().getDate().getTimeMilli()==TaskDateTime.getCurrentDate().getTimeMilli())
 			{
-				todaysTasks.add(param);
+				if (!param.getCompleted())
+					todaysTasks.add(param);
 			} else if (param.getEnd()!=null && param.getEnd().getTimeMilli()==TaskDateTime.getCurrentDate().getTimeMilli()){
+				if (!param.getCompleted())
+					todaysTasks.add(param);
+			} else if (param.getImportant() && !param.getCompleted()){
 				todaysTasks.add(param);
 			}
+				
 			
 		}
 		if (todaysTasks.size()!=0)
