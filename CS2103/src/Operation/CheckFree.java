@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 import parser.Parser;
-
+ 
 import storagecontroller.StorageManager;
 import constant.OperationFeedback;
 
@@ -25,7 +25,7 @@ public class CheckFree extends Operation{
 	@Override
 	public Task[] execute(String userCommand) {
 		// TODO Auto-generated method stub
-		userCommand.toLowerCase().trim().replaceFirst("checkfree ", "");
+		userCommand.toLowerCase().trim().replaceFirst("check.free ", "");
 		
 		Search SearchObj=new Search();
 	
@@ -52,7 +52,7 @@ public class CheckFree extends Operation{
 			}
 			
 			for (long i= )*/
-			return null;
+			return new Task[1];
 		}
 		else {
 			feedback = OperationFeedback.NOT_FREE;
