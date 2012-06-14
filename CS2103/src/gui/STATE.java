@@ -24,14 +24,28 @@ public enum STATE {
 	private static STATE prevState = NULL;
 	private static String command;
 	
+	/**
+	 * set the state from the string
+	 * @param str the string that have to be extracted state
+	 */
 	public static void setState(String str) {
 		setState(checkCommand(str), true);
 	}
 	
+	/**
+	 * set the curState to newState
+	 * @param newState
+	 */
 	public static void setState(STATE newState) {
 		setState(newState, false);
 	}
 	
+	/**
+	 * set the curState to newState and update the command if string is not received.
+	 * @param newState
+	 * @param isCommandSent true: the user has sent the command and the command is set. 
+	 * false: no command from users
+	 */
 	public static void setState(STATE newState, boolean isCommandSent) {
 		prevState = curState;
 		curState = newState;
@@ -39,23 +53,41 @@ public enum STATE {
 			command = curState.toString();
 	}
 	
+	/**
+	 * reset state to null.
+	 */
 	public static void resetState() {
 		curState = NULL;
 		prevState = NULL;
 	}
 	
+	/**
+	 * get the current state.
+	 * @return current state
+	 */
 	public static STATE getState() {
 		return curState;
 	}
 	
+	/**
+	 * get the previous state.
+	 * @return previous state.
+	 */
 	public static STATE getPrevState() {
 		return prevState;
 	}
 	
 	
-	
-	public static String getEndedString(boolean wasOneTask) {
-		if(wasOneTask)
+	/**This function returns the ending statement of the feedback 
+	 * which is different for each command and for the different number of tasks. 
+	 * For example, if the current state is “add” and “one” task is added, 
+	 * it will return “was added.”\
+	 * 
+	 * @param isOneTask true: singular false:plural.
+	 * @return String that will appear after task detail.
+	 */
+	public static String getEndedString(boolean isOneTask) {
+		if(isOneTask)
 			switch(curState){
 			case ADD: return "was added.";
 			case DELETEALL:
@@ -73,7 +105,8 @@ public enum STATE {
 			case IMPORTGCAL: return "was imported from Google Calendar.";
 			case SYNCGCAL: return "was synced with Google Calendar.";
 			default:
-				logger.warn(curState + " getEndedString");
+				logger.error(curState + " getEndedString singular form");
+				return "successfully";
 			}
 		else
 			switch(curState) {
@@ -92,17 +125,22 @@ public enum STATE {
 			case IMPORTGCAL: return "were imported from Google Calendar.";
 			case SYNCGCAL: return "were synced with Google Calendar.";
 			default:
-				logger.warn(curState + " getEndedString");
-				return "";
+				logger.error(curState + " getEndedString plural form");
+				return "successfully";
 			}
-		
-		logger.warn("ended string message for " + curState + " is not implemented.");
-		return null;
 	}
 	
+	/**
+	 * This function acts as a filter to extract command from the string
+	 * and to check which state that command belongs to
+	 * @param curText text that needs extracting.
+	 * @return state from extracting curText
+	 */
 	public static STATE checkCommand(String curText) {
-		if(curText.equals(""))
+		if(curText.equals("")) {
+			logger.warn("receive null string from the input");
 			return STATE.NULL;
+		}
 		
 		String delims = "[ ]+";
 		String firstWord = curText.trim().split(delims)[0];
@@ -168,10 +206,19 @@ public enum STATE {
 		return STATE.NULL;
 	} 
 
+	/**
+	 * get the command string.
+	 * @return command string
+	 */
 	public static String getCommand() {
 		return command;
 	}
 
+	/**
+	 * This function provides valid feedback 
+	 * that do not require task detail to be shown
+	 * @return string to be shown on feedback
+	 */
 	public static String getFeedbackText() {
 		switch(curState) {
 		case LOGIN:
@@ -188,7 +235,7 @@ public enum STATE {
 			return "That timeslot is free.";
 		
 		default:
-			logger.warn(curState + "getFeedbackText");
+			logger.error(curState + "getFeedbackText");
 			return "Successfully";
 		}	
 	}

@@ -24,10 +24,14 @@ import data.Task;
 
 import logic.JIDLogic;
 
+/**
+ * for controlling UI and initializing the program.
+ * @author Ramon
+ *
+ */
 public class UIController {
-
 	private static Logger logger=Logger.getLogger(UIController.class);
-	
+
 	public static MainJFrame mainJFrame;
 	Reminder reminder;
 	static JotItDownTray JIDtray;
@@ -38,12 +42,31 @@ public class UIController {
 	 * constructor
 	 */
 	public UIController() {
+		initializeMainWindowComponent();		
+		initializeTray();
+	}
+
+
+	/**
+	 * initialize main window components which consist of the pop up,
+	 * the table, and the help frame.
+	 */
+	private void initializeMainWindowComponent() {
 		TopPopUp.createTopPopUp();
 		ExpandComponent.initialize();
 		HelpFrame.initialize();
 		mainJFrame = new MainJFrame();
 		HelpFrame.setPosition();
-		
+	}
+
+	/**
+	 * Initialize the tray after waiting for some time,
+	 * so that the mainJFrame is successfully created.
+	 * <pre>
+	 * mainJFrame has successfully created.
+	 * </pre>
+	 */
+	private void initializeTray() {
 		Timer timer = new Timer(100, new ActionListener(){
 
 			@Override
@@ -68,23 +91,7 @@ public class UIController {
 		JIDLogic.JIDLogic_init();
 	}
 	
-	/**
-	 * getting text from clipboard
-	 * @return text
-	 */
-	public static String getClipboard() {
-	    Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
 
-	    try {
-	        if (t != null && t.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-	            String text = (String)t.getTransferData(DataFlavor.stringFlavor);
-	            return text;
-	        }
-	    } catch (UnsupportedFlavorException e) {
-	    } catch (IOException e) {
-	    }
-	    return null;
-	}
 	
 	/**
 	 * for showing pop up message on the top or mainJFrame
@@ -108,8 +115,10 @@ public class UIController {
 	 */
 	public static void refresh() {
 		if(STATE.getState() != STATE.SEARCH
-				&&STATE.getState() != STATE.OVERDUE)
+				&&STATE.getState() != STATE.OVERDUE) {
+			logger.debug("refresh: in " + STATE.getState()+ ": update JTable");
 			ExpandComponent.updateJTable();
+		}
 		Reminder.update();
 	}
 	
@@ -167,7 +176,6 @@ public class UIController {
 		String execmd = "login " + username + " ";
 		for(int i=0; i<password.length; i++)
 			execmd += password[i];
-		System.out.println(execmd);
 		JIDLogic.executeCommand(execmd);
 		UIController.showFeedbackDisplay();
 	}
@@ -260,6 +268,9 @@ public class UIController {
 		new MailDialog(mainJFrame, true);
 	}
 	
+	/** clear the command line
+	 * 
+	 */
 	public static void clearCommandLine() {
 		MainJFrame.clearCommandLine();
 	}

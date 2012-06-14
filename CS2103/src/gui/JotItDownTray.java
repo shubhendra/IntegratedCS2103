@@ -6,14 +6,21 @@ import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
+import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.TrayIcon.MessageType;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.SwingUtilities;
+
+import org.apache.log4j.Logger;
 
 import data.Task;
 
@@ -26,6 +33,8 @@ import logic.JIDLogic;
  *
  */
 public class JotItDownTray {
+	private static Logger logger=Logger.getLogger(JotItDownTray.class);
+	
 	static SystemTray tray = SystemTray.getSystemTray();
 	PopupMenu popup;
 	Image trayImg;
@@ -87,7 +96,7 @@ public class JotItDownTray {
 		try {
 			tray.add(trayIcon);
 		} catch (AWTException e) {
-			System.err.println("Problem loading Tray icon");
+			logger.error("Problem loading Tray icon");
 		}
 		
 		trayIcon.addMouseListener(new MouseAdapter(){
@@ -108,13 +117,15 @@ public class JotItDownTray {
 	}
 	
 	private void addTaskFromTray() {
-		String input = UIController.getClipboard();
+		String input = getClipboard();
 		
 		JIDLogic.setCommand("add");
 		Task[] tasks = JIDLogic.executeCommand("add "+ input);
 		
-		if(tasks == null)
+		if(tasks == null) {
+			logger.warn("invalid format from user: add " + input);
 			showText("Error!", "invalid input format");
+		}
 		else {
 			showText("Successfully added!", tasks[0].toString());
 			UIController.refresh();
@@ -138,4 +149,24 @@ public class JotItDownTray {
 		trayIcon.displayMessage(caption, text, MessageType.NONE);
 	}
 	
+	/**
+	 * getting text from clipboard
+	 * @return text
+	 */
+	private String getClipboard() {
+	    Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
+
+	    try {
+	        if (t != null && t.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+	            String text = (String)t.getTransferData(DataFlavor.stringFlavor);
+	            return text;
+	        }
+	    } catch (UnsupportedFlavorException e) {
+	    	logger.error("UnsupportedFlavorException");
+	    } catch (IOException e) {
+	    	logger.error("IOException");
+	    }
+	    logger.warn("null text from clipboard.");
+	    return null;
+	}
 }
