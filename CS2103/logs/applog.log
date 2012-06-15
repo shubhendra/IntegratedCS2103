@@ -221,3 +221,185 @@
 2012-06-15 13:57:17,708 - logic.JIDLogic - INFO - Undo being performed for:delete
 2012-06-15 13:57:26,719 - operation.Operation - INFO - find *.*
 2012-06-15 13:57:26,724 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:12,202 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:12,337 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:12,342 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:12,852 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:19,068 - operation.Operation - INFO - DELETE $$__13-06-2012070001N__$$ 
+2012-06-15 14:27:19,119 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:19,124 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:20,204 - logic.JIDLogic - INFO - Undo being performed for:delete
+2012-06-15 14:27:48,405 - operation.Operation - INFO - DELETE $$__14-06-2012150000Z__$$ 
+2012-06-15 14:27:48,426 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:48,431 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:50,046 - logic.JIDLogic - INFO - Undo being performed for:delete
+2012-06-15 14:27:55,792 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:55,792 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:59,813 - operation.Operation - INFO - DELETE $$__13-06-2012070001M__$$ 
+2012-06-15 14:27:59,829 - operation.Operation - INFO - find *.*
+2012-06-15 14:27:59,839 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:00,879 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:00,879 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:03,055 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:28:03,451 - logic.JIDLogic - INFO - Undo being performed for:delete
+2012-06-15 14:28:03,451 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:28:03,756 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:28:04,211 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:04,211 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:04,216 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:28:36,885 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:37,065 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:37,070 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:37,585 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:39,286 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:28:39,767 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:28:39,787 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:28:43,752 - operation.Operation - INFO - DELETE $$__13-06-2012070001X__$$ 
+2012-06-15 14:28:43,798 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:43,803 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:45,073 - logic.JIDLogic - INFO - Undo being performed for:delete
+2012-06-15 14:28:45,073 - gui.UIController - WARN - UNDO: no operationfeedback sent!
+2012-06-15 14:28:45,073 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:45,078 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:50,679 - operation.Operation - INFO - DELETE $$__13-06-2012070001A__$$ 
+2012-06-15 14:28:50,695 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:50,700 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:53,930 - logic.JIDLogic - INFO - Undo being performed for:delete
+2012-06-15 14:28:53,935 - gui.UIController - WARN - UNDO: no operationfeedback sent!
+2012-06-15 14:28:53,935 - operation.Operation - INFO - find *.*
+2012-06-15 14:28:53,935 - operation.Operation - INFO - find *.*
+2012-06-15 14:29:46,227 - operation.Operation - INFO - find *.*
+2012-06-15 14:29:46,517 - operation.Operation - INFO - find *.*
+2012-06-15 14:30:09,288 - operation.Operation - INFO - agendaEmail 
+2012-06-15 14:30:27,934 - operation.Operation - INFO - agendaEmail shubhendra.ag@gmail.com
+2012-06-15 14:30:27,985 - operation.Operation - INFO - find *.*
+2012-06-15 14:30:27,985 - operation.Operation - INFO - find *.*
+2012-06-15 14:30:37,045 - operation.Operation - INFO - add drink water tmr @work
+2012-06-15 14:30:37,151 - operation.Operation - INFO - find *.*
+2012-06-15 14:30:37,156 - operation.Operation - INFO - find *.*
+2012-06-15 14:31:05,971 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:31:06,462 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:31:06,737 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:31:07,787 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:31:11,239 - operation.Operation - INFO - search H
+2012-06-15 14:31:11,540 - operation.Operation - INFO - search HO
+2012-06-15 14:31:11,830 - operation.Operation - INFO - search HOM
+2012-06-15 14:31:12,035 - operation.Operation - INFO - search HOM
+2012-06-15 14:31:12,395 - operation.Operation - INFO - search HOMEW
+2012-06-15 14:31:12,602 - operation.Operation - INFO - search HOMEW
+2012-06-15 14:31:12,962 - operation.Operation - INFO - search HOMEW
+2012-06-15 14:31:13,142 - operation.Operation - INFO - search HOME
+2012-06-15 14:31:13,312 - operation.Operation - INFO - search HOM
+2012-06-15 14:31:13,802 - operation.Operation - INFO - search HO
+2012-06-15 14:31:14,073 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:31:14,103 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:31:14,153 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:33:07,162 - operation.Operation - INFO - find *.*
+2012-06-15 14:33:07,307 - operation.Operation - INFO - find *.*
+2012-06-15 14:33:07,312 - operation.Operation - INFO - find *.*
+2012-06-15 14:33:07,698 - operation.Operation - INFO - find *.*
+2012-06-15 14:33:18,083 - operation.Operation - INFO - add aaa @aaa tmr
+2012-06-15 14:33:18,179 - operation.Operation - INFO - find *.*
+2012-06-15 14:33:18,184 - operation.Operation - INFO - find *.*
+2012-06-15 14:33:23,664 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:33:32,505 - operation.Operation - INFO - add aaaa tmr @work @PLAY
+2012-06-15 14:33:32,545 - operation.Operation - INFO - find *.*
+2012-06-15 14:33:32,551 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:08,316 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:08,446 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:08,451 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:08,846 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:19,077 - operation.Operation - INFO - add aa @a @b tmr
+2012-06-15 14:34:19,175 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:19,180 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:25,615 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:34:34,006 - operation.Operation - INFO - add aa @a @work tmr
+2012-06-15 14:34:34,027 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:34,032 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:54,163 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:54,293 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:54,298 - operation.Operation - INFO - find *.*
+2012-06-15 14:34:54,733 - operation.Operation - INFO - find *.*
+2012-06-15 14:35:01,544 - operation.Operation - INFO - add a @a @b tmr
+2012-06-15 14:35:01,642 - operation.Operation - INFO - find *.*
+2012-06-15 14:35:01,647 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:15,711 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:15,871 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:15,871 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:16,642 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:32,130 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:32,255 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:32,260 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:32,675 - operation.Operation - INFO - find *.*
+2012-06-15 14:36:47,833 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:04,937 - operation.Operation - INFO - add tmr @worl @worl @worl @worl @worl @worl @worl @worl @worl
+2012-06-15 14:37:04,978 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:04,983 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:10,448 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,479 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,509 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,549 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,579 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,604 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,639 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,667 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:10,752 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:18,824 - operation.Operation - INFO - add ggggg tmr @worl @worl @worl @worl @worl @worl @worl @worl @worl
+2012-06-15 14:37:18,850 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:18,850 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:26,780 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:26,940 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:27,500 - gui.STATE - WARN - receive null string from the input
+2012-06-15 14:37:42,830 - operation.Operation - INFO - add ggggg tmr @worl @worl @worl @worl @worl @worl @worl @worlworl @worlworl@worlworvv@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworl@worlworlvl
+2012-06-15 14:37:42,860 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:42,866 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:52,956 - operation.Operation - INFO - IMPORTANT $$__16-06-2012235959H__$$
+2012-06-15 14:37:52,961 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:53,597 - operation.Operation - INFO - IMPORTANT $$__16-06-2012235959H__$$
+2012-06-15 14:37:53,597 - operation.Operation - INFO - find *.*
+2012-06-15 14:37:59,067 - operation.Operation - INFO - IMPORTANT $$__16-06-2012235959H__$$
+2012-06-15 14:37:59,072 - operation.Operation - INFO - find *.*
+2012-06-15 14:38:02,893 - operation.Operation - INFO - IMPORTANT $$__16-06-2012235959H__$$
+2012-06-15 14:38:02,898 - operation.Operation - INFO - find *.*
+2012-06-15 14:39:55,164 - operation.Operation - INFO - find *.*
+2012-06-15 14:39:55,299 - operation.Operation - INFO - find *.*
+2012-06-15 14:39:55,304 - operation.Operation - INFO - find *.*
+2012-06-15 14:39:55,823 - operation.Operation - INFO - find *.*
+2012-06-15 14:40:28,559 - operation.Operation - INFO - add dgsh tmr @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg  @wghwg  @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg
+2012-06-15 14:40:28,680 - operation.Operation - INFO - find *.*
+2012-06-15 14:40:28,680 - operation.Operation - INFO - find *.*
+2012-06-15 14:40:48,999 - operation.Operation - INFO - find *.*
+2012-06-15 14:40:49,156 - operation.Operation - INFO - find *.*
+2012-06-15 14:40:49,161 - operation.Operation - INFO - find *.*
+2012-06-15 14:40:49,636 - operation.Operation - INFO - find *.*
+2012-06-15 14:41:00,907 - operation.Operation - INFO - add abc tmr @wghwg  @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg @wghwg
+2012-06-15 14:41:01,033 - operation.Operation - INFO - find *.*
+2012-06-15 14:41:01,038 - operation.Operation - INFO - find *.*
+2012-06-15 14:43:17,460 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:43:29,037 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:43:32,826 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:43:46,116 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:43:51,372 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:44:18,489 - operation.Operation - INFO - agendaEmail aa
+2012-06-15 14:44:26,351 - operation.Operation - INFO - agendaEmail aa
+2012-06-15 14:45:37,769 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:45:49,865 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:45:52,291 - operation.Operation - INFO - agendaEmail aaa
+2012-06-15 14:46:50,408 - operation.Operation - INFO - agendaEmail asdf
+2012-06-15 14:46:55,598 - operation.Operation - INFO - agendaEmail 
+2012-06-15 14:47:10,794 - operation.Operation - INFO - agendaEmail ramon@dgfg.com
+2012-06-15 14:47:36,710 - operation.Operation - INFO - find *.*
+2012-06-15 14:47:36,890 - operation.Operation - INFO - find *.*
+2012-06-15 14:47:36,890 - operation.Operation - INFO - find *.*
+2012-06-15 14:47:37,391 - operation.Operation - INFO - find *.*
+2012-06-15 14:48:54,065 - operation.Operation - INFO - add ghsdfhsdkjfhdskj nhsdkfsndkj sdfhndskjfdsn dfhsdkf fsdfnhsk dfkdsnfskld tmr
+2012-06-15 14:48:54,201 - operation.Operation - INFO - find *.*
+2012-06-15 14:48:54,206 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:09,549 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:09,689 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:09,692 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:10,108 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:45,227 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:45,387 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:45,387 - operation.Operation - INFO - find *.*
+2012-06-15 14:52:45,911 - operation.Operation - INFO - find *.*
