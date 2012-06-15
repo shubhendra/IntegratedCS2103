@@ -79,7 +79,7 @@ public enum OperationFeedback {
 		case START_DATE_TIME_MORE_THAN_END_DATE_TIME:
 			return "Error: The start date time is after the end date time.";
 		case INVALID_DATE_TIME:
-			return "Error: Time input is in invalid format.";
+			return "Error: Time/Date input is in invalid format.";
 		case RECURRING_TIMES_EXCEEDED:
 			return "Error: Recurrint times exceeded.";
 		case INVALID_DATE:
@@ -97,9 +97,9 @@ public enum OperationFeedback {
 		case REDO_UNSUCCESSFUL:
 			return "Error: Redo is unsuccessful.";
 		case UNDO_SUCCESSFUL:
-			return "Undo successfully.";
+			return "Undo successful.";
 		case REDO_SUCCESSFUL:
-			return "Redo successfully.";
+			return "Redo successful.";
 		case UNDO_EMPTY:
 			return "Error: No more things to be undone.";
 		case REDO_EMPTY:
@@ -115,7 +115,7 @@ public enum OperationFeedback {
 		case INVALID_INCORRECTLOGIN:
 			return "Error: incorrect username or password.";
 		case ADD_FAILED:
-			return "Error: add failed.";
+			return "Error: Invalid input.";
 		case DELETE_FAILED:
 			return "Error: delete failed.";
 		case EDIT_FAILED:

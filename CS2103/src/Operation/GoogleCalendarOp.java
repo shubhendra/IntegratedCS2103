@@ -40,13 +40,16 @@ public class GoogleCalendarOp extends Operation {
 		} else if (userCommand.toLowerCase().startsWith("login")) {
 			return login(userCommand);
 		}
-		else if (userCommand.toLowerCase().startsWith("sync.gcal")) {
+		else if (userCommand.toLowerCase().startsWith("sync.gcal")
+				|| userCommand.toLowerCase().startsWith("syncgcal")) {
 			return sync();
 		}
-		else if (userCommand.toLowerCase().startsWith("import.gcal")) {
+		else if (userCommand.toLowerCase().startsWith("import.gcal")
+				|| userCommand.toLowerCase().startsWith("importgcal")) {
 			return importTasks();
 		}
-		else if (userCommand.toLowerCase().startsWith("export.gcal")) {
+		else if (userCommand.toLowerCase().startsWith("export.gcal")
+				|| userCommand.toLowerCase().startsWith("exportgcal")) {
 			return exportTasks();
 		}
 		
@@ -119,9 +122,12 @@ public class GoogleCalendarOp extends Operation {
 		GoogleCalendar obj = StorageManager.getGCalObject();
 		if (obj != null){
 			if (obj.isLoggedIn()){
-				Thread t = new Thread(StorageManager.getGCalObject());
-				t.start();
-				return null;
+				if (StorageManager.getGCalObject().sync()){
+					return null;
+				} else{
+					feedback = OperationFeedback.INVALID_NOINTERNET;
+					return null;
+				}
 			} else{
 				feedback = OperationFeedback.USER_NOT_LOGGEDIN;
 				return null;
@@ -165,7 +171,7 @@ public class GoogleCalendarOp extends Operation {
 		obj.login(username, password);
 		if (obj.isLoggedIn()){
 			StorageManager.setGCalObject(obj);
-		
+			feedback=OperationFeedback.VALID;
 			return null;
 			
 		} else{
