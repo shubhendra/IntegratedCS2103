@@ -21,6 +21,7 @@ public abstract class Operation {
 	
 	
 	protected OperationFeedback feedback=OperationFeedback.VALID;
+	protected OperationFeedback undoRedoFeedback=null;
 	protected boolean isUndoAble=false;
 	private static Logger logger=Logger.getLogger(Operation.class);
 	/**
@@ -33,9 +34,12 @@ public abstract class Operation {
 		Operation object;
 		
 		String intendedOperation;
+		
 		intendedOperation = userCommand.trim().split("\\s+")[0];
-		intendedOperation = intendedOperation.toLowerCase();
-		logger.debug(intendedOperation);
+		intendedOperation = intendedOperation.toLowerCase().trim();
+		if (!intendedOperation.equals("login")) {
+			logger.info(userCommand);
+		}
 		
 		
 		if (intendedOperation.equals("add") || intendedOperation.equals("insert")){
@@ -73,6 +77,9 @@ public abstract class Operation {
 		else if (intendedOperation.equals("agendaemail")){
 			object = new AgendaEmail();
 		}
+		else if (intendedOperation.equals("upcoming")){
+			object = new Upcoming();
+		}
 		else if (intendedOperation.equals("login") || intendedOperation.equals("logout") ||
 				intendedOperation.equals("sync.gcal") || intendedOperation.equals("import.gcal") ||
 				intendedOperation.equals("export.gcal")) {
@@ -108,6 +115,9 @@ public abstract class Operation {
 	 * @param taskToBeExecuted
 	 * @return Task that was successfully executed else null
 	 */
+	public OperationFeedback getUndoRedoFeedback(){
+		return undoRedoFeedback;
+	}
 	protected Task[] execute(Task taskToBeExecuted)
 	{
 		return null;

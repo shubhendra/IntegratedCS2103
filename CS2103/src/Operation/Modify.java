@@ -1,3 +1,4 @@
+
 /**
  * extends Operation
  * implements the functionality to edit a given task's details
@@ -6,7 +7,6 @@
  */
 package operation;
 
-import org.apache.log4j.Logger;
 import constant.OperationFeedback;
 import parser.Parser;
 import data.Task;
@@ -17,8 +17,7 @@ public class Modify extends BaseSearch{
 	private Task oldTask;
 	private Task newTask;
 	private static Task taskBeingEdited = null;
-	private static Logger logger = Logger.getLogger(Modify.class);
-	
+
 	/**
 	 * constructor
 	 */
@@ -50,7 +49,6 @@ public class Modify extends BaseSearch{
 	public Task[] execute(Task taskToBeEdited){
 		if(taskBeingEdited == null) {
 			taskBeingEdited = StorageManager.getTaskById(taskToBeEdited.getTaskId());
-			logger.debug("taskBeingEdited" + taskBeingEdited.getName());
 			return new Task[] {taskBeingEdited};
 		} else{
 			
@@ -61,7 +59,6 @@ public class Modify extends BaseSearch{
 				oldTask = taskBeingEdited;
 				newTask = taskToBeEdited;
 				taskBeingEdited = null;
-				logger.debug("Editing succesful");
 				return new Task[] {taskToBeEdited};
 				
 			}
@@ -92,6 +89,7 @@ public class Modify extends BaseSearch{
 		Task[] undoneArray = new Task[1];
 		if (modify(newTask, oldTask)) {
 			undoneArray[0] = oldTask;
+			undoRedoFeedback=OperationFeedback.UNDO_SUCCESSFUL;
 			return undoneArray;
 		}
 		return null;
@@ -136,15 +134,7 @@ public class Modify extends BaseSearch{
 	 */
 	public Task[] execute(String userCommand) {
 		// TODO Auto-generated method stub
-		Task[] def = StorageManager.getAllTasks();
-    	if (def != null)
-    	{
-    		for (int i = 0 ; i < def.length ; i++)
-    		{
-    			logger.debug(def[i].toString() + " " + def[i].getTaskId());
-    		}
-    	}
-		
+				
 		if (taskBeingEdited == null)
 		{
 			return super.execute(userCommand);
@@ -154,7 +144,6 @@ public class Modify extends BaseSearch{
 		{
 			String params = userCommand.toLowerCase().replaceFirst(commandName+" ","");
 			Task taskToBeEdited = parseTask(params);
-			logger.debug("Task To be edited" + taskToBeEdited.getName());
 			return execute(taskToBeEdited);
 			
 		}
@@ -182,6 +171,7 @@ public class Modify extends BaseSearch{
 		Task[] redoneArray = new Task[1];
 		if (modify(oldTask, newTask)) {
 			redoneArray[0] = newTask;
+			undoRedoFeedback=OperationFeedback.REDO_SUCCESSFUL;
 			return redoneArray;
 		}
 		return null;

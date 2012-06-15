@@ -3,8 +3,12 @@
  */
 package operation;
 
+import java.util.ArrayList;
+
+import storagecontroller.StorageManager;
 import constant.OperationFeedback;
 import data.Task;
+import data.TaskDateTime;
 
 /**
  * @author Shubhendra Agrawal
@@ -12,18 +16,40 @@ import data.Task;
  */
 public class Upcoming extends Operation {
 
+	private static final long UPCOMING_TASK_DURATION_MILLI = 7*24*3600*100;
 	/**
-	 * 
+	 * executes the upcoming functionality
+	 * @return the task array of tasks in the next week 
 	 */
 	@Override
 	public Task[] execute(String userCommand) {
 		// TODO Auto-generated method stub
 		
-		return null;
+		Task[] allTasks = StorageManager.getAllTasks();
+		ArrayList<Task> upcomingTasks = new ArrayList<Task>();
+		for (int i = 0; i < allTasks.length; i++) {
+			if (allTasks[i].getStart()!=null) {
+				long timeDiff = allTasks[i].getStart().getTimeMilli() 
+						- TaskDateTime.getCurrentDateTime().getTimeMilli();
+				if (timeDiff<UPCOMING_TASK_DURATION_MILLI) {
+					upcomingTasks.add(allTasks[i]);
+				}
+				
+			}
+		}
+		
+		
+		if (upcomingTasks.size() != 0) {
+			return (Task[]) upcomingTasks.toArray(new Task[upcomingTasks.size()]);
+		}
+		else {
+			feedback = OperationFeedback.NO_UPCOMING_TASKS_IN_COMING_WEEK;
+			return null;
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see operation.Operation#undo()
+	/**
+	 * undo is irrelevant
 	 */
 	@Override
 	public Task[] undo() {
@@ -31,8 +57,8 @@ public class Upcoming extends Operation {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see operation.Operation#redo()
+	/**
+	 * redo is irrelevant
 	 */
 	@Override
 	public Task[] redo() {
@@ -40,8 +66,8 @@ public class Upcoming extends Operation {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see operation.Operation#isUndoAble()
+	/**
+	 * @return whether the Operation is undoable or not
 	 */
 	@Override
 	public boolean isUndoAble() {
@@ -49,22 +75,22 @@ public class Upcoming extends Operation {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see operation.Operation#getOpFeedback()
+	/**
+	 * @return the operation feedback
 	 */
 	@Override
 	public OperationFeedback getOpFeedback() {
 		// TODO Auto-generated method stub
-		return null;
+		return feedback;
 	}
 
-	/* (non-Javadoc)
-	 * @see operation.Operation#getOperationName()
+	/**
+	 * @return the operation name
 	 */
 	@Override
 	public String getOperationName() {
 		// TODO Auto-generated method stub
-		return null;
+		return "upcoming";
 	}
 
 }

@@ -8,7 +8,6 @@
 package operation;
 
 import java.util.ArrayList;
-import org.apache.log4j.Logger;
 import constant.OperationFeedback;
 import storagecontroller.StorageManager;
 import data.Task;
@@ -17,7 +16,6 @@ import data.Task;
 public class ToggleImportant extends BaseSearch {
 
 	
-	private static Logger logger = Logger.getLogger(BaseSearch.class);
 	private ArrayList<Task> taskStarred = new ArrayList<Task>();
 	
 	/**
@@ -41,20 +39,19 @@ public class ToggleImportant extends BaseSearch {
 		}
 		Task[] taskToBeStarred = StorageManager
 				.getTaskByRecurrenceID(taskToStar.getRecurringId());
-		logger.debug(taskToBeStarred.length);
+		
 		for (int i = 0 ; i < taskToBeStarred.length ; i++)
 		{
 			boolean starred = toggleImportant(taskToBeStarred[i]);
 			if (starred) {
 				isUndoAble = true;
 				taskStarred.add(taskToBeStarred[i]);
-				logger.debug("starred succesfully");
-				
 			} else {
 				return null;
 			}
 		}
 		if (taskStarred.size()!=0) {
+			
 			return (Task[])taskStarred.toArray(new Task[taskStarred.size()]);
 		} else {
 			return null;
@@ -84,7 +81,6 @@ public class ToggleImportant extends BaseSearch {
 			taskStarred.add(taskToStar);
 			Task[] resultOfStar = new Task[1];
 			resultOfStar[0] = taskToStar;
-			logger.debug("starred succesfully");
 			return resultOfStar;
 		}
 
@@ -122,12 +118,12 @@ public class ToggleImportant extends BaseSearch {
 			Task starredTask=StorageManager.getTaskById(taskStarred.get(i).getTaskId());
 			if (starredTask != null){
 				starredTask.toggleImportant();
-				logger.debug("Can undo");
 				undoneTasks.add(starredTask);
 			}
 			
 		}
 		if (undoneTasks.size() != 0) {
+			undoRedoFeedback=OperationFeedback.REDO_SUCCESSFUL;
 			return undoneTasks.toArray(new Task[undoneTasks.size()]);
 		}
 		else { 
@@ -148,12 +144,12 @@ public class ToggleImportant extends BaseSearch {
 			Task starredTask = StorageManager.getTaskById(taskStarred.get(i).getTaskId());
 			if (starredTask != null){
 				starredTask.toggleImportant();
-				logger.debug("Can undo");
 				redoneTasks.add(starredTask);
 			}
 			
 		}
 		if (redoneTasks.size() != 0) {
+			undoRedoFeedback=OperationFeedback.REDO_SUCCESSFUL;
 			return redoneTasks.toArray(new Task[redoneTasks.size()]);
 		} else { 
 			return null;
